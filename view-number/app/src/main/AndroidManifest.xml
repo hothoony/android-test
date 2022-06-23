@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.android_webview">
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
-<!--    <uses-permission android:name="android.permission.BLUETOOTH" />-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />-->
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />-->
+    package="com.example.hello_world">
 
     <application
         android:allowBackup="true"
@@ -19,9 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Androidwebview"
-        android:usesCleartextTraffic="true"
-
+        android:theme="@style/Theme.Helloworld"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"

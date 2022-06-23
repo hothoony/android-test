@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        button {
+            font-size: 1rem;
+        }
+        div {
+            line-height: 40px;
+        }
+    </style>
+
+    <script>
+        function jsAlert() {
+            window.alert('alert 메소드입니다.');
+        }
+        function jsConfirm() {
+            if (window.confirm('confirm 메소드를 실행했습니까?')) {
+                alert('yes 를 선택했습니다.');
+            }
+        }
+        function jsPrompt() {
+            const result = window.prompt('prompt 메소드입니다. 값을 입력하세요', '이건 기본값입니다');
+            if (result) {
+                alert('입력값=' + result);
+            }
+        }
+        function jsOpenPopup() {
+            window.open('popup.html', 'popup', 'width=400,height=600');
+        }
+    </script>
+
+</head>
+<body>
+
+    <h1>웹뷰 테스트 사이트</h1>
+    <div>
+        <button onclick="jsAlert()">alert()</button>
+    </div>
+    <div>
+        <button onclick="jsConfirm()">confirm()</button>
+    </div>
+    <div>
+        <button onclick="jsPrompt()">prompt()</button>
+    </div>
+    <div>
+        <button onclick="jsOpenPopup()">팝업창 열기</button>
+    </div>
+    
+</body>
+</html>
