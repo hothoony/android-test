@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onCreateWindow(WebView view, boolean isDialog, boolean isUserGesture, Message resultMsg) {
-                Log.i(TAG, "## onCreateWindow: 창 열림");
+                Log.i(TAG, "## onCreateWindow: 팝업창 열림");
 
                 WebView webViewChild = new WebView(view.getContext());
                 webViewChild.getSettings().setJavaScriptEnabled(true);
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 webViewChild.setWebChromeClient(new WebChromeClient() {
                     @Override
                     public void onCloseWindow(WebView window) {
-                        Log.i(TAG, "## onCloseWindow: 창 닫힘");
+                        Log.i(TAG, "## onCloseWindow: 팝업창 닫힘");
                         dialog.dismiss();
                     }
                 });
