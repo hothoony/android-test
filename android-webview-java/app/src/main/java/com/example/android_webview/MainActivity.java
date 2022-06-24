@@ -52,8 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
         webSettings.setJavaScriptEnabled(true); // true 로 해줘야 javascript 이 동작함
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-//        webSettings.setSupportMultipleWindows(true); // true 로 하면 WebChromeClient.onCreateWindow 가 호출된다
-        webSettings.setSupportMultipleWindows(false); // false 로 하면 javascript 팝업창이 뜬다
+
+        // true 로 설정시
+        // WebChromeClient.onCreateWindow 가 호출된다
+        // 앱이 아닌 브라우저로 팝업창이 열린다
+//        webSettings.setSupportMultipleWindows(true);
+
+        // false 로 설정시
+        // WebChromeClient.onCreateWindow 가 호출되지 않는다
+        // 앱 내에서 팝업창이 열린다
+        webSettings.setSupportMultipleWindows(false);
     }
 
     private void setWebViewClient(WebView webView) {
