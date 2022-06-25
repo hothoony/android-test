@@ -1,13 +1,16 @@
 package com.example.android_webview;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -16,7 +19,10 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
                 WebView webViewChild = new WebView(view.getContext());
                 webViewChild.getSettings().setJavaScriptEnabled(true);
+                webViewChild.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+                webViewChild.getSettings().setSupportMultipleWindows(true);
 
                 Dialog dialog = new Dialog(view.getContext());
                 dialog.setContentView(webViewChild);
@@ -58,6 +66,20 @@ public class MainActivity extends AppCompatActivity {
 
                 webViewChild.setWebViewClient(new WebViewClient());
                 webViewChild.setWebChromeClient(new WebChromeClient() {
+                    @Override
+                    public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
+                        Log.i(TAG, "## onShowFileChooser: 업로드할 파일 선택");
+
+                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                        intent.setType("image/*");
+                        startActivityForResult(Intent.createChooser(intent, "select picture"), 1);
+//                        registerForActivityResult
+
+                        return true;
+                    }
+
+
                     @Override
                     public void onCloseWindow(WebView window) {
                         Log.i(TAG, "## onCloseWindow: 팝업창 닫힘");
