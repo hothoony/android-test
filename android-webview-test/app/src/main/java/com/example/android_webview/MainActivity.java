@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Arrays;
@@ -71,14 +72,12 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(TAG, "## onShowFileChooser: 업로드할 파일 선택");
 
                         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+//                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                         intent.setType("image/*");
-                        startActivityForResult(Intent.createChooser(intent, "select picture"), 1);
-//                        registerForActivityResult
+                        startActivityForResult(Intent.createChooser(intent, "select picture 123"), 0);
 
                         return true;
                     }
-
 
                     @Override
                     public void onCloseWindow(WebView window) {
@@ -99,4 +98,13 @@ public class MainActivity extends AppCompatActivity {
         webView.loadUrl("http://192.168.1.218:5500");
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.i(TAG, "## onActivityResult: ");
+        Log.i(TAG, "## requestCode: " + requestCode);
+        Log.i(TAG, "## resultCode: " + resultCode);
+        Log.i(TAG, "## data: " + data);
+    }
 }
